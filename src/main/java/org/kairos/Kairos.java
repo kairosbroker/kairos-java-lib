@@ -35,6 +35,10 @@ public class Kairos {
         return handle;
     }
 
+    public boolean isPublisher() {
+        return isPublisher;
+    }
+
     public boolean publish(String message) {
         if (!isPublisher) {
             return false;
@@ -92,10 +96,6 @@ public class Kairos {
         this.in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
         this.out = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
         this.isPublisher = isPublisher;
-    }
-
-    private boolean isPublisher() {
-        return isPublisher;
     }
 
     private boolean reply(Message message) {
