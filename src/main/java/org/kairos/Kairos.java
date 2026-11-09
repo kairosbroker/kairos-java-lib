@@ -14,7 +14,13 @@ import java.net.SocketException;
 
 public class Kairos {
     static public Kairos connect(String ip, int port, boolean publisher, String topic) throws IOException {
-        Kairos handle = new Kairos(ip, port, publisher);
+        Kairos handle;
+        try {
+            handle = new Kairos(ip, port, publisher);
+        } catch (IOException e) {
+            return null;
+        }
+
         handle.reply(new Control(handle.isPublisher() ? MessageType.MSG_ID_PUBLISHER : MessageType.MSG_ID_CONSUMER));
         Message response = handle.waitForResponse();
 
