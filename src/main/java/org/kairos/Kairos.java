@@ -67,7 +67,6 @@ public class Kairos {
         }
 
         Consume newData = (Consume) waitForResponse();
-        System.out.println("New data: " + newData.getMessage());
         return newData.getMessage();
     }
 
