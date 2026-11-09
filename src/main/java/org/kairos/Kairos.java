@@ -1,3 +1,5 @@
+package org.kairos;
+
 import org.kairos.protocol.MessageType;
 import org.kairos.protocol.generic.Message;
 import org.kairos.protocol.message.Consume;
