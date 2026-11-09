@@ -13,7 +13,7 @@ import java.net.Socket;
 import java.net.SocketException;
 
 public class Kairos {
-    static public Kairos connect(String ip, int port, boolean publisher, String topic) throws IOException {
+    static public Kairos connect(String ip, int port, boolean publisher, String topic) {
         Kairos handle;
         try {
             handle = new Kairos(ip, port, publisher);
@@ -26,7 +26,6 @@ public class Kairos {
 
         if (response.getType() != MessageType.MSG_OK) {
             System.err.println("Did not get confirmation message, something went wrong.");
-//            throw new RuntimeException("Did not get MSG_OK, something went wrong.");
             return null;
         }
 
