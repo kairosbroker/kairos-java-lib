@@ -66,8 +66,21 @@ public class Kairos {
             return "You are not a consumer";
         }
 
-        Consume newData = (Consume) waitForResponse();
-        return newData.getMessage();
+        Message newData;
+
+        while (true) {
+            newData = waitForResponse();
+
+            if (newData.getType() == MessageType.MSG_PING) {
+                continue;
+            }
+
+            if (newData.getType() == MessageType.MSG_CONSUME) {
+                break;
+            }
+        }
+
+        return ((Consume) newData).getMessage();
     }
 
     public void close() {
