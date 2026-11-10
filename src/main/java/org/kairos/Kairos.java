@@ -6,6 +6,7 @@ import org.kairos.protocol.message.Consume;
 import org.kairos.protocol.message.Control;
 import org.kairos.protocol.message.JoinTopic;
 import org.kairos.protocol.message.Publish;
+import org.kairos.protocol.message.Ping;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -76,11 +77,9 @@ public class Kairos {
             }
 
             if (newData.getType() == MessageType.MSG_CONSUME) {
-                break;
+                return ((Consume) newData).getMessage();
             }
         }
-
-        return ((Consume) newData).getMessage();
     }
 
     public void close() {
